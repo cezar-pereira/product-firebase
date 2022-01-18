@@ -16,7 +16,7 @@ class ProductRrepository implements ProductRepositoryInterface {
       var result = await dataSource.fetchProducts();
       return Right(result);
     } catch (e) {
-      return Left(ErrorFetchProducts(message: 'Erro ao buscar produtos'));
+      return Left(ErrorFetchProducts(message: e.toString()));
     }
   }
 }
