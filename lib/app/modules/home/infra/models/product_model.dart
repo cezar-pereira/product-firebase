@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:products_firebase/app/modules/home/domain/entities/product_entity.dart';
 
 class ProductModel extends ProductEntity {
@@ -40,16 +41,21 @@ class ProductModel extends ProductEntity {
   }
 
   factory ProductModel.fromMap({required Map<String, dynamic> map}) {
+    DateTime _convertTimestampToDatetime({required Timestamp time}) {
+      return time.toDate();
+    }
+
     return ProductModel(
-        id: map['id'],
-        title: map['title'],
-        type: map['type'],
-        price: map['price'],
-        description: map['description'],
-        fileName: map['filename'],
-        height: map['height'],
-        width: map['width'],
-        rating: map['rating'],
-        createdAt: map['createdAt']);
+      id: map['id'],
+      title: map['title'],
+      type: map['type'],
+      price: map['price'],
+      description: map['description'],
+      fileName: map['filename'],
+      height: map['height'],
+      width: map['width'],
+      rating: map['rating'],
+      createdAt: _convertTimestampToDatetime(time: map['createdAt']),
+    );
   }
 }

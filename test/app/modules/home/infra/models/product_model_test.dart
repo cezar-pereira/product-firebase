@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:products_firebase/app/modules/home/infra/models/product_model.dart';
 
@@ -25,7 +26,7 @@ Map<String, dynamic> data = {
       "width": 400,
       "price": 28.1,
       "rating": 4,
-      "createdAt": DateTime.now()
+      "createdAt": Timestamp.now()
     }
   ]
 };
