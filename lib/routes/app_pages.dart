@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:get/get.dart';
 import 'package:products_firebase/app/modules/home/presenter/home_binding.dart';
 import 'package:products_firebase/app/modules/home/presenter/home_page.dart';

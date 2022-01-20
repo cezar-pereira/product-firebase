@@ -30,4 +30,15 @@ class ProductRrepository implements ProductRepositoryInterface {
       return Left(ErrorFetchImageProduct(message: e.toString()));
     }
   }
+
+  @override
+  Future<Either<FailureProductInterface, bool>> removeProduct(
+      {required String id}) async {
+    try {
+      var result = await dataSource.removeProduct(id: id);
+      return Right(result);
+    } catch (e) {
+      return Left(ErrorRemoveProduct(message: e.toString()));
+    }
+  }
 }

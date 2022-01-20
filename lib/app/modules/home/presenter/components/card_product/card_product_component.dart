@@ -4,9 +4,11 @@ import 'package:products_firebase/app/modules/home/domain/entities/product_entit
 import 'package:intl/intl.dart';
 
 class CardProductComponent extends StatelessWidget {
-  const CardProductComponent({Key? key, required this.productEntity})
+  const CardProductComponent(
+      {Key? key, required this.productEntity, required this.onRemove})
       : super(key: key);
   final ProductEntity productEntity;
+  final ValueChanged onRemove;
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +88,11 @@ class CardProductComponent extends StatelessWidget {
       position: RelativeRect.fromLTRB(left, top, 0, 0),
       items: <PopupMenuEntry>[
         PopupMenuItem(child: const Text('Editar'), onTap: () {}),
-        PopupMenuItem(child: const Text('Remover'), onTap: () {}),
+        PopupMenuItem(
+            child: const Text('Remover'),
+            onTap: () {
+              onRemove(productEntity);
+            }),
       ],
       elevation: 8.0,
     );
