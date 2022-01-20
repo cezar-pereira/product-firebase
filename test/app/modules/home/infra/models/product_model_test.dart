@@ -26,7 +26,8 @@ Map<String, dynamic> data = {
       "width": 400,
       "price": 28.1,
       "rating": 4,
-      "createdAt": Timestamp.now()
+      "createdAt": Timestamp.now(),
+      "urlImg": "url"
     }
   ]
 };
