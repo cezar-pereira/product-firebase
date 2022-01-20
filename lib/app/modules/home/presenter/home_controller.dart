@@ -6,22 +6,26 @@ class HomeController extends GetxController {
   HomeController({required this.fetchProductUseCase});
   final FetchProductsUsecaseInterface fetchProductUseCase;
   var isLoading = true.obs;
+  var isFetchMore = false.obs;
   var isError = "".obs;
   var productList = <ProductEntity>[].obs;
 
+  @override
   void onInit() {
     fetchProducts();
     super.onInit();
   }
 
   fetchProducts() async {
-    isLoading(true);
     var result = await fetchProductUseCase();
     result.fold((l) {
       isError.value = l.message;
     }, (r) {
-      productList.value = r;
+      productList.value = [...productList, ...r];
+
+      // print(productList.value.length);
     });
     isLoading(false);
+    isFetchMore(false);
   }
 }

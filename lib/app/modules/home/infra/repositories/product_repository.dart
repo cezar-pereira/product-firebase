@@ -19,4 +19,15 @@ class ProductRrepository implements ProductRepositoryInterface {
       return Left(ErrorFetchProducts(message: e.toString()));
     }
   }
+
+  @override
+  Future<Either<FailureProductInterface, String>> fetchUrlImageProduct(
+      {required String fileName}) async {
+    try {
+      var result = await dataSource.fetchUrlImageProduct(fileName: fileName);
+      return Right(result);
+    } catch (e) {
+      return Left(ErrorFetchImageProduct(message: e.toString()));
+    }
+  }
 }

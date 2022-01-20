@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:products_firebase/app/modules/home/presenter/components/card_product/card_product_component.dart';
 
 import 'home_controller.dart';
 
@@ -9,7 +10,9 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        alignment: Alignment.center,
         child: Obx(() {
           if (controller.isLoading.value) {
             return const CircularProgressIndicator.adaptive();
@@ -19,14 +22,39 @@ class HomePage extends GetView<HomeController> {
             return Text(controller.isError.value);
           }
 
-          return ListView.separated(
-            itemCount: controller.productList.length,
-            itemBuilder: (context, index) {
-              return Text(controller.productList[index].title);
-            },
-            separatorBuilder: (context, index) => const SizedBox(
-              height: 10,
-            ),
+          return Column(
+            children: [
+              Expanded(
+                child: NotificationListener<ScrollEndNotification>(
+                  child: ListView.separated(
+                    shrinkWrap: true,
+                    itemCount: controller.productList.length,
+                    itemBuilder: (context, index) {
+                      return CardProductComponent(
+                          productEntity: controller.productList[index]);
+                    },
+                    separatorBuilder: (context, index) => const SizedBox(
+                      height: 10,
+                    ),
+                  ),
+                  onNotification: (scrollEnd) {
+                    if (scrollEnd.metrics.atEdge &&
+                        scrollEnd.metrics.pixels > 0) {
+                      if (!controller.isLoading.value) {
+                        controller.isFetchMore.value = true;
+                        controller.fetchProducts();
+                      }
+                    }
+                    return true;
+                  },
+                ),
+              ),
+              Visibility(
+                  visible: controller.isFetchMore.value,
+                  child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: const CircularProgressIndicator.adaptive())),
+            ],
           );
         }),
       ),

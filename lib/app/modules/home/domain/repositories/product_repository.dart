@@ -4,4 +4,6 @@ import 'package:products_firebase/app/modules/home/domain/errors/errors_product.
 
 abstract class ProductRepositoryInterface {
   Future<Either<FailureProductInterface, List<ProductEntity>>> fetchProducts();
+  Future<Either<FailureProductInterface, String>> fetchUrlImageProduct(
+      {required String fileName});
 }

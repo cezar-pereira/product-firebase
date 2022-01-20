@@ -9,6 +9,7 @@ class ProductEntity {
   final int width;
   final int rating;
   final DateTime createdAt;
+  final String urlImg;
 
   ProductEntity({
     this.id = '',
@@ -16,6 +17,7 @@ class ProductEntity {
     required this.type,
     required this.price,
     this.description = '',
+    this.urlImg = '',
     this.fileName = '',
     this.height = 0,
     this.width = 0,

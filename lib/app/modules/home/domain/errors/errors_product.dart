@@ -7,3 +7,9 @@ class ErrorFetchProducts implements FailureProductInterface {
   final String message;
   ErrorFetchProducts({required this.message});
 }
+
+class ErrorFetchImageProduct implements FailureProductInterface {
+  @override
+  final String message;
+  ErrorFetchImageProduct({required this.message});
+}

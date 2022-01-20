@@ -8,22 +8,23 @@ class ProductModel extends ProductEntity {
     required String type,
     required double price,
     required DateTime createdAt,
+    String urlImg = '',
     String description = '',
     String fileName = '',
     int height = 0,
     int width = 0,
     int rating = 0,
   }) : super(
-          id: id,
-          title: title,
-          type: type,
-          price: price,
-          description: description,
-          fileName: fileName,
-          height: height,
-          width: width,
-          rating: rating,
-        );
+            id: id,
+            title: title,
+            type: type,
+            price: price,
+            description: description,
+            fileName: fileName,
+            height: height,
+            width: width,
+            rating: rating,
+            urlImg: urlImg);
 
   Map<String, dynamic> toMap() {
     return {
@@ -56,6 +57,7 @@ class ProductModel extends ProductEntity {
       width: map['width'],
       rating: map['rating'],
       createdAt: _convertTimestampToDatetime(time: map['createdAt']),
+      urlImg: map['urlImg'],
     );
   }
 }
