@@ -9,6 +9,8 @@ class ProductFirebaseDataSourceMock extends Mock
 
 void main() {
   ProductDatasourceInterface dataSource = ProductFirebaseDataSourceMock();
+  ProductEntity product = ProductEntity(title: '', type: '', price: 0);
+  ;
   group('fetchProducts:', () {
     test('Should return a List<ProductEntity>', () async {
       List<ProductEntity> list = [];
@@ -47,18 +49,18 @@ void main() {
 
   group('removeProduct:', () {
     test('Should return true', () async {
-      when(() => dataSource.removeProduct(id: ''))
+      when(() => dataSource.removeProduct(product: product))
           .thenAnswer((_) async => true);
-      var result = await dataSource.removeProduct(id: '');
+      var result = await dataSource.removeProduct(product: product);
       expect(result, true);
-      verify(() => dataSource.removeProduct(id: '')).called(1);
+      verify(() => dataSource.removeProduct(product: product)).called(1);
     });
     test('Should return a ErrorRemoveProduct', () async {
       FailureProductInterface error = ErrorRemoveProduct(message: '');
-      when(() => dataSource.removeProduct(id: '')).thenThrow(error);
-      expect(() => dataSource.removeProduct(id: ''),
+      when(() => dataSource.removeProduct(product: product)).thenThrow(error);
+      expect(() => dataSource.removeProduct(product: product),
           throwsA(isA<ErrorRemoveProduct>()));
-      verify(() => dataSource.removeProduct(id: '')).called(1);
+      verify(() => dataSource.removeProduct(product: product)).called(1);
     });
   });
 }

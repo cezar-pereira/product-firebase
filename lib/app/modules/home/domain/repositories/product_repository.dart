@@ -7,5 +7,5 @@ abstract class ProductRepositoryInterface {
   Future<Either<FailureProductInterface, String>> fetchUrlImageProduct(
       {required String fileName});
   Future<Either<FailureProductInterface, bool>> removeProduct(
-      {required String id});
+      {required ProductEntity product});
 }

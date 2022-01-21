@@ -48,14 +48,24 @@ class ProductFirebaseDataSource implements ProductDatasourceInterface {
     try {
       return await storage.ref(fileName).getDownloadURL();
     } catch (e) {
-      throw Exception(e);
+      throw ErrorFetchProducts(message: e.toString());
     }
   }
 
   @override
-  Future<bool> removeProduct({required String id}) async {
+  Future<bool> removeProduct({required ProductEntity product}) async {
     try {
-      await reference.doc(id).delete();
+      await _removePhotoProduct(fileName: product.fileName);
+      await reference.doc(product.id).delete();
+      return true;
+    } catch (e) {
+      throw ErrorRemoveProduct(message: e.toString());
+    }
+  }
+
+  Future<bool> _removePhotoProduct({required String fileName}) async {
+    try {
+      await storage.ref(fileName).delete();
       return true;
     } catch (e) {
       throw Exception(e);

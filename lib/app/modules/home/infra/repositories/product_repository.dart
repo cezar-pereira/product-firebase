@@ -33,9 +33,9 @@ class ProductRrepository implements ProductRepositoryInterface {
 
   @override
   Future<Either<FailureProductInterface, bool>> removeProduct(
-      {required String id}) async {
+      {required ProductEntity product}) async {
     try {
-      var result = await dataSource.removeProduct(id: id);
+      var result = await dataSource.removeProduct(product: product);
       return Right(result);
     } catch (e) {
       return Left(ErrorRemoveProduct(message: e.toString()));

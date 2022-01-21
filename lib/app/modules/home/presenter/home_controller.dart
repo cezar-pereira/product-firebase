@@ -31,7 +31,7 @@ class HomeController extends GetxController {
   }
 
   removeProduct({required ProductEntity product}) async {
-    var result = await removeProductUsecase(id: product.id);
+    var result = await removeProductUsecase(product: product);
     result.fold((l) {
       isError.value = l.message;
     }, (r) {

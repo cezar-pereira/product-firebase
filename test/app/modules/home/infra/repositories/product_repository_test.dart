@@ -10,6 +10,7 @@ class ProductRepositoryMock extends Mock implements ProductRepositoryInterface {
 
 void main() {
   late final ProductRepositoryInterface repository;
+  ProductEntity product = ProductEntity(title: '', type: '', price: 0);
   setUpAll(() {
     repository = ProductRepositoryMock();
   });
@@ -54,19 +55,19 @@ void main() {
 
   group('removeProduct:', () {
     test('Should return true', () async {
-      when(() => repository.removeProduct(id: ''))
+      when(() => repository.removeProduct(product: product))
           .thenAnswer((_) async => const Right(true));
-      var result = await repository.removeProduct(id: '');
+      var result = await repository.removeProduct(product: product);
       expect(result, const Right(true));
-      verify(() => repository.removeProduct(id: '')).called(1);
+      verify(() => repository.removeProduct(product: product)).called(1);
     });
     test('Should return a ErrorRemoveProduct', () async {
       FailureProductInterface error = ErrorRemoveProduct(message: '');
-      when(() => repository.removeProduct(id: ''))
+      when(() => repository.removeProduct(product: product))
           .thenAnswer((_) async => Left(error));
-      var result = await repository.removeProduct(id: '');
+      var result = await repository.removeProduct(product: product);
       expect(result, Left(error));
-      verify(() => repository.removeProduct(id: '')).called(1);
+      verify(() => repository.removeProduct(product: product)).called(1);
     });
   });
 }
