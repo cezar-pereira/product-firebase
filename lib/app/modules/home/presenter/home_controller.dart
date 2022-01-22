@@ -38,4 +38,9 @@ class HomeController extends GetxController {
       productList.remove(product);
     });
   }
+
+  updateProductLocal({required ProductEntity product}) {
+    var index = productList.indexWhere((element) => element.id == product.id);
+    productList[index] = product;
+  }
 }

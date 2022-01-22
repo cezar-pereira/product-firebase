@@ -10,7 +10,7 @@ class ProductFirebaseDataSourceMock extends Mock
 void main() {
   ProductDatasourceInterface dataSource = ProductFirebaseDataSourceMock();
   ProductEntity product = ProductEntity(title: '', type: '', price: 0);
-  ;
+
   group('fetchProducts:', () {
     test('Should return a List<ProductEntity>', () async {
       List<ProductEntity> list = [];

@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:products_firebase/app/modules/home/domain/entities/product_entity.dart';
 import 'package:intl/intl.dart';
 
@@ -87,7 +88,13 @@ class CardProductComponent extends StatelessWidget {
       context: context,
       position: RelativeRect.fromLTRB(left, top, 0, 0),
       items: <PopupMenuEntry>[
-        PopupMenuItem(child: const Text('Editar'), onTap: () {}),
+        PopupMenuItem(
+            child: const Text('Editar'),
+            onTap: () {
+              WidgetsBinding.instance!.addPostFrameCallback((_) {
+                Get.toNamed('/product', arguments: productEntity);
+              });
+            }),
         PopupMenuItem(
             child: const Text('Remover'),
             onTap: () {

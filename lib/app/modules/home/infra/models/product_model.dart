@@ -60,4 +60,26 @@ class ProductModel extends ProductEntity {
       urlImg: map['urlImg'],
     );
   }
+
+  ProductModel copyWith(
+      {String? title,
+      String? type,
+      double? price,
+      String? description,
+      int? height,
+      int? width,
+      int? rating}) {
+    return ProductModel(
+        id: id,
+        fileName: fileName,
+        createdAt: createdAt,
+        urlImg: urlImg,
+        description: description ?? this.description,
+        height: height ?? this.height,
+        width: width ?? this.width,
+        title: title ?? this.title,
+        type: type ?? this.type,
+        price: price ?? this.price,
+        rating: rating ?? this.rating);
+  }
 }

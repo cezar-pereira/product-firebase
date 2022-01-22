@@ -3,6 +3,8 @@
 import 'package:get/get.dart';
 import 'package:products_firebase/app/modules/home/presenter/home_binding.dart';
 import 'package:products_firebase/app/modules/home/presenter/home_page.dart';
+import 'package:products_firebase/app/modules/product/presenter/product_binding.dart';
+import 'package:products_firebase/app/modules/product/presenter/product_page.dart';
 
 import 'app_routes.dart';
 
@@ -10,6 +12,12 @@ class AppPages {
   static const INITIAL = Routes.HOME;
   static final routes = [
     GetPage(
-        name: Routes.HOME, page: () => const HomePage(), binding: HomeBinding())
+        name: Routes.HOME,
+        page: () => const HomePage(),
+        binding: HomeBinding()),
+    GetPage(
+        name: Routes.PRODUCTS,
+        page: () => const ProductPage(),
+        binding: ProductBinding()),
   ];
 }
