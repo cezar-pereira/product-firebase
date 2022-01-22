@@ -1,16 +1,36 @@
-# products_firebase
+<h1 align="center"> 
+	Products Firebase
+</h1>
 
-A new Flutter project.
+---
 
-## Getting Started
+## ⚙️ Funcionalidades
 
-This project is a starting point for a Flutter application.
+- Listar produtos
+- Remover produto
+- Atualizar produto
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## 📘 Packages
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### get
+### dartz
+### mocktail
+### cached_network_image
+### Firebase (cloud and storage)
+
+---
+
+## ⬇️ Download APK
+[Download](https://github.com/cezar-pereira/product-firebase/raw/master/apk/app-armeabi-v7a-release.apk).
+
+---
+
+
+## ⬇️ To run
+1. Clonar repositório
+2. Rodar o comando: flutter pub get
+3. Conectar um dispositivo android e rodar: flutter run
+---
+
